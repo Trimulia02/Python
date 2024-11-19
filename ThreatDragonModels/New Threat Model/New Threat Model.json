@@ -38,6 +38,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 1,
             "ports": {
               "groups": {
                 "top": {
@@ -121,7 +122,6 @@
               ]
             },
             "id": "9cf5fea9-a471-4c6e-beb2-7627d2a1a69e",
-            "zIndex": 1,
             "data": {
               "type": "tm.Actor",
               "name": "User",
@@ -147,13 +147,14 @@
                 "text": "Authenticate User"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 2,
             "ports": {
               "groups": {
                 "top": {
@@ -237,19 +238,40 @@
               ]
             },
             "id": "084f46d6-a846-4235-bdc9-878f079eaa36",
-            "zIndex": 2,
             "data": {
               "type": "tm.Process",
               "name": "Authenticate User",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "fd365466-9b0d-44fa-9f4f-a46e7402e124",
+                  "title": "Lack of Accountability in User Actions",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "\"Users or attackers may deny performing certain actions on the system if audit logs are not maintained properly.\"",
+                  "mitigation": "\"Enable robust logging mechanisms that capture all user actions with timestamps.\"\n\"Use digital signatures to verify the integrity of logs.\"\n\"Ensure logs are securely stored and accessible only by authorized personnel.\"\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 21,
+                  "score": "3"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             },
             "children": [
               "4752b665-137e-4333-82ae-eb460cdefbf3"
@@ -276,6 +298,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 3,
             "ports": {
               "groups": {
                 "top": {
@@ -359,7 +382,6 @@
               ]
             },
             "id": "d03329e5-0f05-4e66-a7c6-b66fc345fd4a",
-            "zIndex": 3,
             "data": {
               "type": "tm.Process",
               "name": "Process Order",
@@ -395,6 +417,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 4,
             "ports": {
               "groups": {
                 "top": {
@@ -478,7 +501,6 @@
               ]
             },
             "id": "35545564-15de-4aaa-b328-a528bf896348",
-            "zIndex": 4,
             "data": {
               "type": "tm.Process",
               "name": "Send Notification",
@@ -507,16 +529,19 @@
                 "text": "User Database"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 5,
             "ports": {
               "groups": {
                 "top": {
@@ -600,20 +625,39 @@
               ]
             },
             "id": "e55d4a96-5d21-416f-95ac-2e9857fd08b1",
-            "zIndex": 5,
             "data": {
               "type": "tm.Store",
               "name": "User Database",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "bbc4ccb1-bb06-44ea-ac3a-647e34e6ab12",
+                  "title": " Unauthorized Access to User Database",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "\"An attacker may gain unauthorized access to the user database and modify sensitive user information due to weak access control mechanisms.\"",
+                  "mitigation": "\"Implement role-based access control (RBAC) with least privilege.\"\n\"Ensure secure authentication methods such as multi-factor authentication (MFA).\"\n\"Enable detailed and immutable audit logs for tracking database modifications.\"\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 12,
+                  "score": "4"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 4,
+                "repudiation": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 1
+              }
             }
           },
           {
@@ -630,16 +674,19 @@
                 "text": "Order Database"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 6,
             "ports": {
               "groups": {
                 "top": {
@@ -723,20 +770,39 @@
               ]
             },
             "id": "16352330-f68b-445c-94f7-7e942d91ebd4",
-            "zIndex": 6,
             "data": {
               "type": "tm.Store",
               "name": "Order Database",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "cac64517-7d06-4225-8872-1b77cda4127a",
+                  "title": "Denial of Service on Order Database",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "\"A high volume of malicious requests could overwhelm the order database, causing disruption in order processing.\"",
+                  "mitigation": "\"Set up rate limiting and request throttling to mitigate abusive behavior.\"\n\"Implement load balancing and scalable infrastructure to handle spikes in traffic.\"\n\"Deploy Web Application Firewalls (WAFs) to filter malicious traffic.\"",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 13,
+                  "score": "3"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1
+              }
             }
           },
           {
@@ -760,7 +826,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "Login Credentials",
-              "description": "",
+              "description": "This flow represents the transmission of user credentials (e.g., username and password) from the user to the system during the login process. It is critical for user authentication.",
               "outOfScope": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
@@ -768,7 +834,12 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Login Credentials"
@@ -782,7 +853,23 @@
             },
             "vertices": [
               {
+                "x": 220,
+                "y": 80
+              },
+              {
                 "x": 250,
+                "y": 10
+              },
+              {
+                "x": 290,
+                "y": -10
+              },
+              {
+                "x": 320,
+                "y": -10
+              },
+              {
+                "x": 370,
                 "y": 10
               }
             ]
@@ -816,7 +903,12 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Login Status"
@@ -830,8 +922,24 @@
             },
             "vertices": [
               {
-                "x": 270,
-                "y": 55
+                "x": 390,
+                "y": 30
+              },
+              {
+                "x": 330,
+                "y": 30
+              },
+              {
+                "x": 280,
+                "y": 60
+              },
+              {
+                "x": 240,
+                "y": 90
+              },
+              {
+                "x": 220,
+                "y": 140
               }
             ]
           },
@@ -864,7 +972,12 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Order Request"
@@ -878,8 +991,12 @@
             },
             "vertices": [
               {
-                "x": 330,
-                "y": 120
+                "x": 300,
+                "y": 100
+              },
+              {
+                "x": 400,
+                "y": 100
               }
             ]
           },
@@ -912,7 +1029,12 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Order Status"
@@ -925,6 +1047,10 @@
               "cell": "9cf5fea9-a471-4c6e-beb2-7627d2a1a69e"
             },
             "vertices": [
+              {
+                "x": 350,
+                "y": 170
+              },
               {
                 "x": 320,
                 "y": 170
@@ -960,7 +1086,12 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Order Confirmation Notification"
@@ -971,7 +1102,13 @@
             },
             "target": {
               "cell": "9cf5fea9-a471-4c6e-beb2-7627d2a1a69e"
-            }
+            },
+            "vertices": [
+              {
+                "x": 340,
+                "y": 290
+              }
+            ]
           },
           {
             "shape": "flow",
@@ -1099,7 +1236,12 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Validation Result"
@@ -1116,7 +1258,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -1136,12 +1279,31 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "0a027086-eff5-4d31-9c2a-1e1aa6589abe",
+                  "title": "Exposure of Order Details",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "\"Sensitive order details could be exposed if proper encryption is not used during data storage and transmission.\"",
+                  "mitigation": "\"Encrypt sensitive order details at rest using strong encryption algorithms like AES.\"\n\"Restrict database access to authorized applications and users.\"\n\"Conduct regular vulnerability assessments and patch known security issues.\"",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 14,
+                  "score": "3"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Save Order Details"
@@ -1189,7 +1351,26 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "f46c2a65-fadc-4091-a007-2d7771c8205b",
+                  "title": "Order Confirmation Data Flow",
+                  "status": "Mitigated",
+                  "severity": "Low",
+                  "type": "Tampering",
+                  "description": "\"An attacker could modify the order confirmation details during transmission, leading to incorrect information being displayed to users.\"",
+                  "mitigation": "\"Implement end-to-end encryption for all data in transit.\"\n\"Use message authentication codes (MACs) to ensure data integrity.\"\n\"Perform validation checks on the server side before processing confirmation data.\"\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 16,
+                  "score": "2"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Order Confirmation"
@@ -1206,6 +1387,10 @@
               {
                 "x": 630,
                 "y": 180
+              },
+              {
+                "x": 590,
+                "y": 180
               }
             ]
           }
@@ -1214,6 +1399,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Atanasius Pradiptha Sampurno",
-    "threatTop": 0
+    "threatTop": 21
   }
 }
